@@ -1,0 +1,132 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/muharik19/boiler-plate-grpc/api/grpc/api/pb/v1;pb";
+
+message CreateRoleRequest {
+    message Data {
+        string name = 1;
+    };
+    Data body = 1;
+}
+
+message CreateRoleResponse {
+    string responseCode = 1;
+    string responseDesc = 2;
+    message ResponseData {
+        string id = 1;
+    };
+    ResponseData responseData = 3;
+}
+
+message GetRoleByIDRequest {
+    string id = 1;
+}
+
+message GetRoleByIDResponse {
+    string responseCode = 1;
+    string responseDesc = 2;
+    message ResponseData {
+        string id = 1;
+        string name = 2;
+    };
+    ResponseData responseData = 3;
+}
+
+message GetListRoleRequest {
+    map<string, string> filter = 1;
+    int32 page = 2;
+    int32 limit = 3;
+    string sort = 4;
+    string field = 5;
+}
+
+message GetListRoleResponse {
+    string responseCode = 1;
+    string responseDesc = 2;
+    message ResponseData {
+        int32 page = 1;
+        int32 limit = 2;
+        int32 total = 3;
+        int32 totalPage = 4;
+        message Role {
+            string id = 1;
+            string name = 2;
+            string createdAt = 3;
+            string createdBy = 4;
+            string updatedAt = 5;
+            string updatedBy = 6;
+        }
+        repeated Role roles = 5;
+    };
+    ResponseData responseData = 3;
+}
+
+message UpdateRoleRequest {
+    message Data {
+        string name = 1;
+    };
+    string id = 1;
+    Data body = 2;
+}
+
+message UpdateRoleResponse {
+    string responseCode = 1;
+    string responseDesc = 2;
+    message ResponseData {
+        string id = 1;
+        string name = 2;
+    };
+    ResponseData responseData = 3;
+}
+
+message DeleteRoleRequest {
+    string id = 1;
+}
+
+message DeleteRoleResponse {
+    string responseCode = 1;
+    string responseDesc = 2;
+    message ResponseData {
+        string id = 1;
+        string name = 2;
+    };
+    ResponseData responseData = 3;
+}
+
+service Role {
+    rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse) {
+        option (google.api.http) = {
+            post: "/api/v1/role"
+            body: "*"
+        };
+    }
+
+    rpc GetRoleByID(GetRoleByIDRequest) returns (GetRoleByIDResponse) {
+        option (google.api.http) = {
+            get: "/api/v1/role/{id}"
+        };
+    }
+
+    rpc GetListRole(GetListRoleRequest) returns (GetListRoleResponse) {
+        option (google.api.http) = {
+            get: "/api/v1/role"
+        };
+    }
+
+    rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse) {
+        option (google.api.http) = {
+            patch: "/api/v1/role/{id}"
+            body: "*"
+        };
+    }
+
+    rpc DeleteRole(DeleteRoleRequest) returns (DeleteRoleResponse) {
+        option (google.api.http) = {
+            delete: "/api/v1/role/{id}"
+        };
+    }
+}

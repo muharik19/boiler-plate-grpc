@@ -1,0 +1,77 @@
+version: "3.5"
+
+services:
+  # API Service
+  boiler-plate-grpc:
+    container_name: boiler-plate-grpc
+    build:
+      context: ../
+      dockerfile: build/package/Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - ../.env
+    environment:
+      - ENV=DEV
+      - ELASTIC_URL_1=http://boiler-plate-grpc-elasticsearch:9200
+    depends_on:
+      - boiler-plate-grpc-postgres
+      - boiler-plate-grpc-elasticsearch
+    networks:
+      - boiler-plate-grpc-net
+    volumes:
+      - .:/app
+
+  # PostgreSQL Service
+  boiler-plate-grpc-postgres:
+    container_name: boiler-plate-grpc-postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret@123
+      - POSTGRES_DB=dashboard_ui
+    volumes:
+      - boiler-plate-grpc-postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - boiler-plate-grpc-net
+
+  # Elasticsearch Service
+  boiler-plate-grpc-elasticsearch:
+    container_name: boiler-plate-grpc-elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.1
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - boiler-plate-grpc-net
+    volumes:
+      - boiler-plate-grpc-elasticsearch:/usr/share/elasticsearch/data
+
+  # Kibana Service (Optional, for UI)
+  boiler-plate-grpc-kibana:
+    container_name: boiler-plate-grpc-kibana
+    image: docker.elastic.co/kibana/kibana:8.5.1
+    environment:
+      - ELASTICSEARCH_HOSTS=http://boiler-plate-grpc-elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - boiler-plate-grpc-elasticsearch
+    networks:
+      - boiler-plate-grpc-net
+
+volumes:
+  boiler-plate-grpc-postgres:
+    external: false
+  boiler-plate-grpc-elasticsearch:
+    external: false
+
+networks:
+  boiler-plate-grpc-net:
+    name: boiler-plate-grpc-net
