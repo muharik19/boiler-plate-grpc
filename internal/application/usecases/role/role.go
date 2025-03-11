@@ -121,10 +121,10 @@ func (s *roleService) GetRoleList(ctx context.Context, request *pb.GetListRoleRe
 		ResponseCode: constant.SUCCESS,
 		ResponseDesc: http.StatusText(http.StatusOK),
 		ResponseData: &pb.GetListRoleResponse_ResponseData{
-			Page:      request.GetPage(),
-			Limit:     request.GetLimit(),
+			Page:      int32(pagination.Page),
+			Limit:     int32(pagination.Limit),
 			Total:     int32(*count),
-			TotalPage: int32(math.Ceil(float64(*count) / float64(request.GetLimit()))),
+			TotalPage: int32(math.Ceil(float64(*count) / float64(pagination.Limit))),
 			Roles:     roles,
 		},
 	}, nil
@@ -134,7 +134,7 @@ func (s *roleService) UpdateRole(ctx context.Context, request *pb.UpdateRoleRequ
 	id := request.GetId()
 	body := request.GetBody()
 
-	role, err := s.RoleRepository.GetRoleByID(ctx, id)
+	_, err := s.RoleRepository.GetRoleByID(ctx, id)
 	if err != nil {
 		return &pb.UpdateRoleResponse{
 			ResponseCode: constant.FAILED_NOT_FOUND,

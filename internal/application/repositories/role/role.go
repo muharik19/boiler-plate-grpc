@@ -73,9 +73,9 @@ func (r roleRepository) GetRoleListWithPagination(ctx context.Context, paginatio
 
 	if pagination.Field != "" {
 		if pagination.Field == "id" {
-			field = "INITCAP(id)"
+			field = "id"
 		} else if pagination.Field == "name" {
-			field = `INITCAP("role_name")`
+			field = "role_name"
 		} else {
 			field = "created_at"
 		}
