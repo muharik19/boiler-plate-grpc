@@ -160,3 +160,7 @@ Despite, it is possible to run this project in local machine Please follow this 
     │   └── integration_test.go  # Integration test
     └── migrations/             # Database migration scripts
         └── 20210101_init.sql   # Initial migration script
+
+## Documentation API Postman
+
+[API](https://documenter.getpostman.com/view/42999233/2sAYk7SPpJ)
