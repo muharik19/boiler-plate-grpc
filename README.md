@@ -39,19 +39,19 @@ $ make --version
 
 - Install protoc-gen-go use homebrew `brew install protoc-gen-go` it will also install protoc
 - The compiler plugin, protoc-gen-go, will be installed in `$GOPATH/bin` unless `$GOBIN` is set. It must be in your $PATH for the protocol compiler, protoc, to find it
-- Install grpc-gateway  `go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gatewa`
+- Install grpc-gateway  `go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway`
 - Intall protoc-gen-swagger `go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger`
 
 ### Install protoc and protoc-gen-go in Ubuntu
 
 - Install protoc-gen-go `go get -u github.com/golang/protobuf/protoc-gen-go`. It will also install protoc
-- Install grpc-gateway  `go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gatewa`
+- Install grpc-gateway  `go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway`
 - Intall protoc-gen-swagger `go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger`
 
 ### Install protoc and protoc-gen-go in Windows
 
 - Install protoc-gen-go `go get -u github.com/golang/protobuf/protoc-gen-go`. It will also install protoc
-- Install grpc-gateway  `go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gatewa`
+- Install grpc-gateway  `go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway`
 - Intall protoc-gen-swagger `go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger`
 
 ## How to run
