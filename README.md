@@ -92,8 +92,8 @@ Despite, it is possible to run this project in local machine Please follow this 
     │       ├── consumer/       # Consumer for messages
     │       └── scheduler/      # Scheduler for tasks
     ├── build/                  # Build-related files
-    │    └── package/            # Package-related files
-    │        └── Dockerfile      # Dockerfile for building the application
+    │    └── package/           # Package-related files
+    │        └── Dockerfile     # Dockerfile for building the application
     ├── cmd/                    # Contains main applications
     │   ├── graphql/            # GraphQL application
     │   │   └── graphql.go      # Entry point Cobra Command for GraphQL app
@@ -110,7 +110,7 @@ Despite, it is possible to run this project in local machine Please follow this 
     ├── configs/                # Configuration files
     │   └── configs.go          # Configuration Global
     ├── deployments/            # Deployment-related files
-    │   └── docker-compose.yml   # Docker Compose configuration file
+    │   └── docker-compose.yml  # Docker Compose configuration file
     ├── docs/                   # Project documentation
     │   ├── api/                # API documentation
     │   ├── architecture/       # Architecture documentation
@@ -131,12 +131,12 @@ Despite, it is possible to run this project in local machine Please follow this 
     │   │   │       └── InfoDetailResponse.go # Info detail response
     │   │   ├── repositories/   # Repositories for data access
     │   │   │   └── info/       # Info related repositories
-    │   │   │       ├── info.go     # Info repository
+    │   │   │       ├── info.go # Info repository
     │   │   │       ├── info_mock.go # Mock for info repository
     │   │   │       └── interface.go # Info repository interface
     │   │   └── usecases/       # Use cases for application logic
     │   │       └── info/       # Info related use cases
-    │   │           ├── add_info.go # Use case for adding info
+    │   │           ├── add_info.go  # Use case for adding info
     │   │           ├── find_info.go # Use case for finding info
     │   │           ├── find_info_test.go # Tests for finding info
     │   │           └── interface.go # Info use case interface
@@ -157,7 +157,7 @@ Despite, it is possible to run this project in local machine Please follow this 
     │   └── setup.sh            # Setup script
     ├── test/                   # Contains test files
     │   ├── testdata/           # Test data
-    │   └── integration_test.go  # Integration test
+    │   └── integration_test.go # Integration test
     └── migrations/             # Database migration scripts
         └── 20210101_init.sql   # Initial migration script
 
