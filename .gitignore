@@ -15,4 +15,4 @@
 
 # Config & Env.
 .env
-.env.*
+.env.development
