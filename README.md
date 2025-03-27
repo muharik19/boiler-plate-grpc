@@ -88,12 +88,12 @@ Despite, it is possible to run this project in local machine Please follow this 
     │   │   ├── api/            # REST API implementation
     │   │   │   ├── routes/     # Routes for REST API
     │   │   │   └── server.go   # Server setup for REST API
-    │   └── worker/             # Worker API definitions
-    │       ├── consumer/       # Consumer for messages
-    │       └── scheduler/      # Scheduler for tasks
+    │   ├── worker/             # Worker API definitions
+    │   │   ├── consumer/       # Consumer for messages
+    │   │   └── scheduler/      # Scheduler for tasks
     ├── build/                  # Build-related files
-    │    └── package/           # Package-related files
-    │        └── Dockerfile     # Dockerfile for building the application
+    │   ├── package/           # Package-related files
+    │   |   └── Dockerfile     # Dockerfile for building the application
     ├── cmd/                    # Contains main applications
     │   ├── graphql/            # GraphQL application
     │   │   └── graphql.go      # Entry point Cobra Command for GraphQL app
@@ -106,15 +106,15 @@ Despite, it is possible to run this project in local machine Please follow this 
     │   │   │   └── consumer.go # Entry point Cobra Command for consumer
     │   │   └── scheduler/      # Scheduler for tasks
     │   │      └── scheduler.go # Entry point Cobra Command for scheduler
-    │   └── root.go             # Entry point for the root Cobra Command
+    │   ├── root.go             # Entry point for the root Cobra Command
     ├── configs/                # Configuration files
-    │   └── configs.go          # Configuration Global
+    │   ├── configs.go          # Configuration Global
     ├── deployments/            # Deployment-related files
-    │   └── docker-compose.yml  # Docker Compose configuration file
+    │   ├── docker-compose.yml  # Docker Compose configuration file
     ├── docs/                   # Project documentation
     │   ├── api/                # API documentation
     │   ├── architecture/       # Architecture documentation
-    │   └── images/             # Images related to documentation
+    │   ├── images/             # Images related to documentation
     ├── internal/               # Code that can only be used by this project
     │   ├── application/        # Application logic
     │   │   ├── adapters/       # Adapters for external services
@@ -134,30 +134,30 @@ Despite, it is possible to run this project in local machine Please follow this 
     │   │   │       ├── info.go # Info repository
     │   │   │       ├── info_mock.go # Mock for info repository
     │   │   │       └── interface.go # Info repository interface
-    │   │   └── usecases/       # Use cases for application logic
-    │   │       └── info/       # Info related use cases
-    │   │           ├── add_info.go  # Use case for adding info
-    │   │           ├── find_info.go # Use case for finding info
-    │   │           ├── find_info_test.go # Tests for finding info
-    │   │           └── interface.go # Info use case interface
+    │   │   ├── usecases/       # Use cases for application logic
+    │   │   │   └── info/       # Info related use cases
+    │   │   │       ├── add_info.go  # Use case for adding info
+    │   │   │       ├── find_info.go # Use case for finding info
+    │   │   │       ├── find_info_test.go # Tests for finding info
+    │   │   │       └── interface.go # Info use case interface
     │   ├── domain/             # Domain models
-    │   │   └── entities/       # Domain entities
-    │   │       └── response.go # Response standardization entities
-    │   │       └── info/       # Info related entities group
-    │   │           └── info.go # Info entity definition
-    │   └── pkg/                # Internal packages
-    │       ├── database/       # Database related code
-    │       │   ├── nosql/      # NoSQL database connection code
-    │       │   └── sql/        # SQL database connection code
-    │       ├── logger/         # Logging utilities
-    │       └── utils/          # Utility functions
+    │   │   ├── entities/       # Domain entities
+    │   │   |   ├── response.go # Response standardization entities
+    │   │   │   └── info/       # Info related entities group
+    │   │   │       └── info.go # Info entity definition
+    │   ├── pkg/                # Internal packages
+    │   │   ├── database/       # Database related code
+    │   │   │   ├── nosql/      # NoSQL database connection code
+    │   │   │   └── sql/        # SQL database connection code
+    │   │   ├── logger/         # Logging utilities
+    │   │   └── utils/          # Utility functions
     ├── pkg/                    # Code that can be used by other projects
     │   ├── pkg1/               # Package global for used all application
     ├── scripts/                # Scripts for development and deployment
-    │   └── setup.sh            # Setup script
+    │   ├── setup.sh            # Setup script
     ├── test/                   # Contains test files
     │   ├── testdata/           # Test data
-    │   └── integration_test.go # Integration test
+    │   ├── integration_test.go # Integration test
     └── migrations/             # Database migration scripts
         └── 20210101_init.sql   # Initial migration script
 
