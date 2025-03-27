@@ -105,7 +105,7 @@ Despite, it is possible to run this project in local machine Please follow this 
     │   │   ├── consumer/       # Consumer for messages
     │   │   │   └── consumer.go # Entry point Cobra Command for consumer
     │   │   └── scheduler/      # Scheduler for tasks
-    │   │      └── scheduler.go # Entry point Cobra Command for scheduler
+    │   │       └── scheduler.go # Entry point Cobra Command for scheduler
     │   ├── root.go             # Entry point for the root Cobra Command
     ├── configs/                # Configuration files
     │   ├── configs.go          # Configuration Global
