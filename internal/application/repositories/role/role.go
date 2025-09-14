@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	role "github.com/muharik19/boiler-plate-grpc/internal/domain/entities/role"
-	"github.com/muharik19/boiler-plate-grpc/internal/pkg/database"
+	"github.com/muharik19/boiler-plate-grpc/internal/pkg/database/sql"
 	"github.com/muharik19/boiler-plate-grpc/internal/pkg/logger"
 	"github.com/muharik19/boiler-plate-grpc/internal/pkg/utils"
 	"github.com/uptrace/bun"
@@ -17,7 +17,7 @@ type roleRepository struct {
 
 func NewRoleRepository() *roleRepository {
 	return &roleRepository{
-		db: database.DbBun,
+		db: sql.DbBun,
 	}
 }
 
@@ -72,11 +72,12 @@ func (r roleRepository) GetRoleListWithPagination(ctx context.Context, paginatio
 	}
 
 	if pagination.Field != "" {
-		if pagination.Field == "id" {
+		switch pagination.Field {
+		case "id":
 			field = "id"
-		} else if pagination.Field == "name" {
+		case "name":
 			field = "role_name"
-		} else {
+		default:
 			field = "created_at"
 		}
 	} else {

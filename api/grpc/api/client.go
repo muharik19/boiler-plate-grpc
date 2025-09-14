@@ -16,7 +16,6 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	pb "github.com/muharik19/boiler-plate-grpc/api/grpc/api/pb/v1/role"
 	"github.com/muharik19/boiler-plate-grpc/configs"
-	"github.com/muharik19/boiler-plate-grpc/internal/constant"
 	"github.com/muharik19/boiler-plate-grpc/internal/domain/entities"
 	"github.com/muharik19/boiler-plate-grpc/internal/pkg/utils"
 	"github.com/muharik19/boiler-plate-grpc/pkg/logger"
@@ -125,7 +124,7 @@ func NewHttpServer() error {
 		} else {
 			if utils.ConvertStatusResponseCode(response.ResponseCode) == 500 {
 				response = entities.Response{
-					ResponseCode: constant.FAILED_INTERNAL,
+					ResponseCode: utils.FAILED_INTERNAL,
 					ResponseDesc: http.StatusText(http.StatusInternalServerError),
 				}
 				data, _ = json.Marshal(response)

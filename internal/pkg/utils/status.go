@@ -2,24 +2,22 @@ package utils
 
 import (
 	"net/http"
-
-	"github.com/muharik19/boiler-plate-grpc/internal/constant"
 )
 
 func ConvertStatusResponseCode(responseCode string) uint32 {
 	var code uint32
 	switch {
-	case responseCode == constant.SUCCESS:
+	case responseCode == SUCCESS:
 		code = http.StatusOK
-	case responseCode == constant.FAILED_INTERNAL:
+	case responseCode == FAILED_INTERNAL:
 		code = http.StatusInternalServerError
-	case responseCode == constant.FAILED_NOT_FOUND:
+	case responseCode == FAILED_NOT_FOUND:
 		code = http.StatusNotFound
-	case responseCode == constant.FAILED_REQUIRED:
+	case responseCode == FAILED_REQUIRED:
 		code = http.StatusBadRequest
-	case responseCode == constant.FAILED_AUTHORIZED:
+	case responseCode == FAILED_AUTHORIZED:
 		code = http.StatusUnauthorized
-	case responseCode == constant.FAILED_EXIST:
+	case responseCode == FAILED_EXIST:
 		code = http.StatusBadRequest
 	default:
 		code = http.StatusInternalServerError

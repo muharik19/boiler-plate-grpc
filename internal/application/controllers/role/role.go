@@ -6,8 +6,8 @@ import (
 
 	pb "github.com/muharik19/boiler-plate-grpc/api/grpc/api/pb/v1/role"
 	"github.com/muharik19/boiler-plate-grpc/configs"
-	"github.com/muharik19/boiler-plate-grpc/internal/constant"
 	internal "github.com/muharik19/boiler-plate-grpc/internal/pkg/logger"
+	"github.com/muharik19/boiler-plate-grpc/internal/pkg/utils"
 )
 
 func (s Controllers) CreateRole(ctx context.Context, request *pb.CreateRoleRequest) (*pb.CreateRoleResponse, error) {
@@ -17,7 +17,7 @@ func (s Controllers) CreateRole(ctx context.Context, request *pb.CreateRoleReque
 	role, err := s.RoleService.CreateRole(ctx, request)
 	if err != nil {
 		response := &pb.CreateRoleResponse{
-			ResponseCode: constant.FAILED_INTERNAL,
+			ResponseCode: utils.FAILED_INTERNAL,
 			ResponseDesc: http.StatusText(http.StatusInternalServerError),
 		}
 
@@ -38,7 +38,7 @@ func (s Controllers) GetRoleByID(ctx context.Context, request *pb.GetRoleByIDReq
 	role, err := s.RoleService.GetRoleByID(ctx, request)
 	if err != nil {
 		response := &pb.GetRoleByIDResponse{
-			ResponseCode: constant.FAILED_INTERNAL,
+			ResponseCode: utils.FAILED_INTERNAL,
 			ResponseDesc: http.StatusText(http.StatusInternalServerError),
 		}
 
@@ -59,7 +59,7 @@ func (s Controllers) GetListRole(ctx context.Context, request *pb.GetListRoleReq
 	role, err := s.RoleService.GetRoleList(ctx, request)
 	if err != nil {
 		response := &pb.GetListRoleResponse{
-			ResponseCode: constant.FAILED_INTERNAL,
+			ResponseCode: utils.FAILED_INTERNAL,
 			ResponseDesc: http.StatusText(http.StatusInternalServerError),
 		}
 
@@ -80,7 +80,7 @@ func (s Controllers) UpdateRole(ctx context.Context, request *pb.UpdateRoleReque
 	role, err := s.RoleService.UpdateRole(ctx, request)
 	if err != nil {
 		response := &pb.UpdateRoleResponse{
-			ResponseCode: constant.FAILED_INTERNAL,
+			ResponseCode: utils.FAILED_INTERNAL,
 			ResponseDesc: http.StatusText(http.StatusInternalServerError),
 		}
 
@@ -101,7 +101,7 @@ func (s Controllers) DeleteRole(ctx context.Context, request *pb.DeleteRoleReque
 	role, err := s.RoleService.DeleteRole(ctx, request)
 	if err != nil {
 		response := &pb.DeleteRoleResponse{
-			ResponseCode: constant.FAILED_INTERNAL,
+			ResponseCode: utils.FAILED_INTERNAL,
 			ResponseDesc: http.StatusText(http.StatusInternalServerError),
 		}
 

@@ -8,7 +8,6 @@ import (
 
 	pb "github.com/muharik19/boiler-plate-grpc/api/grpc/api/pb/v1/role"
 	repositories "github.com/muharik19/boiler-plate-grpc/internal/application/repositories/role"
-	"github.com/muharik19/boiler-plate-grpc/internal/constant"
 	entities "github.com/muharik19/boiler-plate-grpc/internal/domain/entities/role"
 	"github.com/muharik19/boiler-plate-grpc/internal/pkg/utils"
 	"github.com/uptrace/bun/schema"
@@ -42,7 +41,7 @@ func (s *roleService) CreateRole(ctx context.Context, request *pb.CreateRoleRequ
 
 	if *exists {
 		return &pb.CreateRoleResponse{
-			ResponseCode: constant.FAILED_EXIST,
+			ResponseCode: utils.FAILED_EXIST,
 			ResponseDesc: "Name already exist",
 		}, nil
 	}
@@ -59,7 +58,7 @@ func (s *roleService) CreateRole(ctx context.Context, request *pb.CreateRoleRequ
 	}
 
 	return &pb.CreateRoleResponse{
-		ResponseCode: constant.SUCCESS,
+		ResponseCode: utils.SUCCESS,
 		ResponseDesc: http.StatusText(http.StatusOK),
 		ResponseData: &pb.CreateRoleResponse_ResponseData{
 			Id: role.ID,
@@ -71,13 +70,13 @@ func (s *roleService) GetRoleByID(ctx context.Context, request *pb.GetRoleByIDRe
 	role, err := s.RoleRepository.GetRoleByID(ctx, request.GetId())
 	if err != nil {
 		return &pb.GetRoleByIDResponse{
-			ResponseCode: constant.FAILED_NOT_FOUND,
+			ResponseCode: utils.FAILED_NOT_FOUND,
 			ResponseDesc: http.StatusText(http.StatusNotFound),
 		}, nil
 	}
 
 	return &pb.GetRoleByIDResponse{
-		ResponseCode: constant.SUCCESS,
+		ResponseCode: utils.SUCCESS,
 		ResponseDesc: http.StatusText(http.StatusOK),
 		ResponseData: &pb.GetRoleByIDResponse_ResponseData{
 			Id:   role.ID,
@@ -92,14 +91,14 @@ func (s *roleService) GetRoleList(ctx context.Context, request *pb.GetListRoleRe
 	items, count, err := s.RoleRepository.GetRoleListWithPagination(ctx, pagination, request.GetFilter())
 	if err != nil {
 		return &pb.GetListRoleResponse{
-			ResponseCode: constant.FAILED_NOT_FOUND,
+			ResponseCode: utils.FAILED_NOT_FOUND,
 			ResponseDesc: http.StatusText(http.StatusNotFound),
 		}, nil
 	}
 
 	if *count == 0 {
 		return &pb.GetListRoleResponse{
-			ResponseCode: constant.FAILED_NOT_FOUND,
+			ResponseCode: utils.FAILED_NOT_FOUND,
 			ResponseDesc: http.StatusText(http.StatusNotFound),
 		}, nil
 	}
@@ -118,7 +117,7 @@ func (s *roleService) GetRoleList(ctx context.Context, request *pb.GetListRoleRe
 	}
 
 	return &pb.GetListRoleResponse{
-		ResponseCode: constant.SUCCESS,
+		ResponseCode: utils.SUCCESS,
 		ResponseDesc: http.StatusText(http.StatusOK),
 		ResponseData: &pb.GetListRoleResponse_ResponseData{
 			Page:      int32(pagination.Page),
@@ -137,7 +136,7 @@ func (s *roleService) UpdateRole(ctx context.Context, request *pb.UpdateRoleRequ
 	_, err := s.RoleRepository.GetRoleByID(ctx, id)
 	if err != nil {
 		return &pb.UpdateRoleResponse{
-			ResponseCode: constant.FAILED_NOT_FOUND,
+			ResponseCode: utils.FAILED_NOT_FOUND,
 			ResponseDesc: http.StatusText(http.StatusNotFound),
 		}, nil
 	}
@@ -150,7 +149,7 @@ func (s *roleService) UpdateRole(ctx context.Context, request *pb.UpdateRoleRequ
 	if *exists {
 		if role.ID != id {
 			return &pb.UpdateRoleResponse{
-				ResponseCode: constant.FAILED_EXIST,
+				ResponseCode: utils.FAILED_EXIST,
 				ResponseDesc: "Name already exist",
 			}, nil
 		}
@@ -169,7 +168,7 @@ func (s *roleService) UpdateRole(ctx context.Context, request *pb.UpdateRoleRequ
 	}
 
 	return &pb.UpdateRoleResponse{
-		ResponseCode: constant.SUCCESS,
+		ResponseCode: utils.SUCCESS,
 		ResponseDesc: http.StatusText(http.StatusOK),
 		ResponseData: &pb.UpdateRoleResponse_ResponseData{
 			Id:   id,
@@ -184,7 +183,7 @@ func (s *roleService) DeleteRole(ctx context.Context, request *pb.DeleteRoleRequ
 	role, err := s.RoleRepository.GetRoleByID(ctx, id)
 	if err != nil {
 		return &pb.DeleteRoleResponse{
-			ResponseCode: constant.FAILED_NOT_FOUND,
+			ResponseCode: utils.FAILED_NOT_FOUND,
 			ResponseDesc: http.StatusText(http.StatusNotFound),
 		}, nil
 	}
@@ -203,7 +202,7 @@ func (s *roleService) DeleteRole(ctx context.Context, request *pb.DeleteRoleRequ
 	}
 
 	return &pb.DeleteRoleResponse{
-		ResponseCode: constant.SUCCESS,
+		ResponseCode: utils.SUCCESS,
 		ResponseDesc: http.StatusText(http.StatusOK),
 		ResponseData: &pb.DeleteRoleResponse_ResponseData{
 			Id:   id,
